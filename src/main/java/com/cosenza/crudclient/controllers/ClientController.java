@@ -1,6 +1,8 @@
 package com.cosenza.crudclient.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,11 @@ public class ClientController {
     public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
         ClientDTO dto = service.findById(id);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping 
+    public Page<ClientDTO> findAll(Pageable pageable) {
+        return service.findAll(pageable);
     }
 
 }
