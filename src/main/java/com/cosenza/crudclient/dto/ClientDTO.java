@@ -4,12 +4,17 @@ import java.time.LocalDate;
 
 import com.cosenza.crudclient.entities.Client;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
 public class ClientDTO {
 
     private Long id;
+    @NotBlank (message = "Campo obrigatório")
     private String name;
     private String cpf;
     private Double income;
+    @PastOrPresent (message = "A data de nascimento não pode ser futura")
     private LocalDate birthDate;
     private Integer children;
 
